@@ -18,6 +18,7 @@ import MenuNav from '@/components/MenuNav.vue';
 
 export default {
   name: 'Home',
+  title: 'Jordi Cea, software engineer',
   components: {
     MenuNav,
   },

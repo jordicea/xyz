@@ -11,7 +11,7 @@ const routes: Array<RouteConfig> = [
     component: Home,
     meta: {
       title: 'Jordi Cea, software engineer',
-    }
+    },
   },
   {
     path: '/about',
