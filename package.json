@@ -1,0 +1,19 @@
+{
+  "name": "jordicea.xyz",
+  "version": "1.0.0",
+  "description": "My personal website",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/jordicea/xyz.git"
+  },
+  "author": "Jordi Cea",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jordicea/xyz/issues"
+  },
+  "homepage": "https://github.com/jordicea/xyz#readme"
+}
