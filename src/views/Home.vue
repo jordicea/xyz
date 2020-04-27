@@ -1,18 +1,54 @@
 <template>
+    <header>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+      <h1>Jordi Cea</h1>
+      <h2>
+          Software engineer. <br>Born in Granollers (Barcelona), currently based in Amsterdam.
+      </h2>
+
   </div>
+  <menuNav></menuNav>
+  <hr>
+  </header>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue';
+import MenuNav from '@/components/MenuNav.vue';
 
 export default {
   name: 'Home',
   components: {
-    HelloWorld,
+    MenuNav,
   },
 };
 </script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;800&display=swap');
+
+header {
+    padding: 5em 0;
+}
+
+hr {
+    background-color: #e5e5e5;
+    height: 1px;
+    border: 0;
+}
+
+h1, h2, h3 {
+  font-family:'Montserrat', sans-serif;
+}
+
+h1 {
+  font-size: 3em;
+}
+
+h2 {
+    font-size: 1.5em;
+    line-height: 1.5em;
+    font-weight: 300;
+}
+
+</style>
