@@ -3,7 +3,9 @@
   <div class="home">
       <h1>Jordi Cea</h1>
       <h2>
-          Software engineer. <br/>Born in Granollers (Barcelona), currently based in Amsterdam.
+          Software engineer. <br/>Born in 
+          <a href="https://ca.wikipedia.org/wiki/Granollers" rel="nofollow" target="_blank">Granollers</a> (Barcelona), currently based in 
+          <a href="https://ca.wikipedia.org/wiki/Amsterdam" rel="nofollow" target="_blank">Amsterdam</a>.
       </h2>
   </div>
   <menuNav></menuNav>
@@ -49,6 +51,16 @@ h2 {
     font-size: 1.5em;
     line-height: 1.5em;
     font-weight: 300;
+}
+
+a {
+  color:#1abc9c;
+  transition: text-decoration 1s ease;
+  text-decoration: underline solid transparent;
+}
+
+a:hover {
+  text-decoration: underline solid currentColor;
 }
 
 </style>

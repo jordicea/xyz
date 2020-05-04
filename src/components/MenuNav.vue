@@ -1,6 +1,7 @@
 <template>
   <div id="nav">
       <!-- <router-link to="/about">About</router-link> |-->
+      <a href="https://es.linkedin.com/in/jordicea/es" target="_blank">linkedin</a> |
       <a href="https://github.com/jordicea" target="_blank">github</a> |
       <a href="https://twitter.com/jordicea" target="_blank">twitter</a>
   </div>
