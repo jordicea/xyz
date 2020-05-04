@@ -7,7 +7,6 @@ import titleMixin from './mixins/titleMixin';
 Vue.config.productionTip = false;
 Vue.mixin(titleMixin);
 
-
 new Vue({
   router,
   store,

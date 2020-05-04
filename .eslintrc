@@ -1,7 +1,3 @@
 {
-  "plugins": ["prettier"],
-  "extends": ["prettier"],
-  "rules": {
-    "prettier/prettier": "error"
-  }
+  "parser": "vue-eslint-parser"
 }
