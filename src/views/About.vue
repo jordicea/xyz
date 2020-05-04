@@ -3,7 +3,6 @@
   <div class="about">
     <h1>This is Jordi Cea</h1>
     <h2>Backend software engineer</h2>
-    <!--<p>I'm mainly focused on the following stack</p>-->
     <ul>
       <li>PHP</li>
       <li>NodeJS: express, nestjs, fastify</li>

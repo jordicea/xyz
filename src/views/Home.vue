@@ -3,12 +3,11 @@
   <div class="home">
       <h1>Jordi Cea</h1>
       <h2>
-          Software engineer. <br>Born in Granollers (Barcelona), currently based in Amsterdam.
+          Software engineer. <br/>Born in Granollers (Barcelona), currently based in Amsterdam.
       </h2>
-
   </div>
   <menuNav></menuNav>
-  <hr>
+  <hr/>
   </header>
 </template>
 
