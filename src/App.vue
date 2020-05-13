@@ -22,7 +22,10 @@ body {
 }
 
 .home {
+    margin: 0 auto;
     width:380px;
+    display: flex;
+    flex-direction: column;
 }
 
 .home h1 {
