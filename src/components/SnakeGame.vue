@@ -21,13 +21,7 @@
   </div>
 </template>
 
-<script lang="ts">
-declare global {
-  interface Window {
-    gtag?: (...args: any[]) => void;
-  }
-}
-
+<script>
 export default {
   name: 'SnakeGame',
   data() {
