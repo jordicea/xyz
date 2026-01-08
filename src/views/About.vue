@@ -4,9 +4,11 @@
     <h1>This is Jordi Cea</h1>
     <h2>Backend software engineer</h2>
     <ul>
+      <li>Golang</li>
       <li>PHP</li>
       <li>NodeJS: express, nestjs, fastify</li>
-      <li>Databases: MySQL, PostgreSQL, MongoDB, Redis</li>
+      <li>Databases: PostgreSQL, MySQL, MongoDB, Redis</li>
+      <li>Cloud: Google Cloud Platform (GCP)</li>
       <li>Event sourcing and queues: RabbitMQ, Kafka</li>
       <li>Docker and Kubernetes</li>
     </ul>

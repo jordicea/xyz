@@ -4,7 +4,25 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="<%= BASE_URL %>favicon.svg">
     <title>Jordi Cea, software engineer</title>
+
+    <!-- Google tag (gtag.js) - Will be activated after cookie consent -->
+    <script id="ga-script" async src="https://www.googletagmanager.com/gtag/js?id=G-BZY5CJW9D0"></script>
+    <script id="ga-config">
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+
+      // Check if user has already consented
+      const consent = localStorage.getItem('cookie-consent');
+      if (consent === 'accepted') {
+        gtag('js', new Date());
+        gtag('config', 'G-BZY5CJW9D0');
+      } else if (consent === 'declined') {
+        // Disable GA if previously declined
+        window['ga-disable-G-BZY5CJW9D0'] = true;
+      }
+    </script>
   </head>
   <body>
     <div id="app"></div>
