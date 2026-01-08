@@ -21,7 +21,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 declare global {
   interface Window {
     gtag?: (...args: any[]) => void;
