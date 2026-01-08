@@ -22,6 +22,12 @@
 </template>
 
 <script>
+declare global {
+  interface Window {
+    gtag?: (...args: any[]) => void;
+  }
+}
+
 export default {
   name: 'SnakeGame',
   data() {
@@ -45,6 +51,9 @@ export default {
     this.initGame();
     this.startGame();
     window.addEventListener('keydown', this.handleKeyPress);
+
+    // Track Snake game start
+    this.trackEvent('snake_game_started');
   },
   beforeUnmount() {
     this.stopGame();
@@ -250,7 +259,12 @@ export default {
       if (this.score > this.highScore) {
         this.highScore = this.score;
         this.saveHighScore();
+        // Track new high score
+        this.trackEvent('snake_new_high_score', { score: this.score });
       }
+
+      // Track game over
+      this.trackEvent('snake_game_over', { score: this.score });
     },
 
     loadHighScore() {
@@ -260,6 +274,13 @@ export default {
 
     saveHighScore() {
       localStorage.setItem('snake-high-score', this.highScore.toString());
+    },
+
+    trackEvent(eventName, params = {}) {
+      // Track event in GA4 if available and user has consented
+      if (window.gtag && localStorage.getItem('cookie-consent') === 'accepted') {
+        window.gtag('event', eventName, params);
+      }
     }
   }
 };

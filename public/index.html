@@ -7,20 +7,40 @@
     <link rel="icon" type="image/svg+xml" href="<%= BASE_URL %>favicon.svg">
     <title>Jordi Cea, software engineer</title>
 
-    <!-- Google tag (gtag.js) - Will be activated after cookie consent -->
-    <script id="ga-script" async src="https://www.googletagmanager.com/gtag/js?id=G-BZY5CJW9D0"></script>
-    <script id="ga-config">
+    <!-- Google Analytics - GDPR Compliant -->
+    <script>
+      // Initialize dataLayer before any GA code
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
+
+      // Set default consent to 'denied' for GDPR compliance
+      gtag('consent', 'default', {
+        'analytics_storage': 'denied',
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied'
+      });
 
       // Check if user has already consented
       const consent = localStorage.getItem('cookie-consent');
       if (consent === 'accepted') {
-        gtag('js', new Date());
-        gtag('config', 'G-BZY5CJW9D0');
-      } else if (consent === 'declined') {
-        // Disable GA if previously declined
-        window['ga-disable-G-BZY5CJW9D0'] = true;
+        // User previously accepted - grant consent and load GA
+        gtag('consent', 'update', {
+          'analytics_storage': 'granted'
+        });
+
+        // Dynamically load GA script only after consent
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-BZY5CJW9D0';
+        document.head.appendChild(script);
+
+        script.onload = function() {
+          gtag('js', new Date());
+          gtag('config', 'G-BZY5CJW9D0', {
+            'anonymize_ip': true
+          });
+        };
       }
     </script>
   </head>

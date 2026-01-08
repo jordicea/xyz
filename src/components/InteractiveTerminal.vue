@@ -197,6 +197,9 @@ Your coffee is ready! ☕
   },
   mounted() {
     this.$refs.terminalInput.focus();
+
+    // Track terminal opened
+    this.trackEvent('terminal_opened');
   },
   methods: {
     executeCommand() {
@@ -225,6 +228,9 @@ Your coffee is ready! ☕
             text: output
           });
         }
+
+        // Track command usage
+        this.trackEvent('terminal_command', { command: cmd });
       } else {
         this.history.push({
           type: 'error',
@@ -283,6 +289,13 @@ Your coffee is ready! ☕
 
     closeTerminal() {
       this.$emit('close');
+    },
+
+    trackEvent(eventName, params = {}) {
+      // Track event in GA4 if available and user has consented
+      if (window.gtag && localStorage.getItem('cookie-consent') === 'accepted') {
+        window.gtag('event', eventName, params);
+      }
     }
   }
 };

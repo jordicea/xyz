@@ -45,17 +45,38 @@ export default class CookieConsent extends Vue {
   }
 
   private enableAnalytics() {
-    // Enable GA4
+    // Update consent to 'granted'
     if (window.gtag) {
-      (window as any)['ga-disable-G-BZY5CJW9D0'] = false;
-      window.gtag('js', new Date());
-      window.gtag('config', 'G-BZY5CJW9D0');
+      window.gtag('consent', 'update', {
+        'analytics_storage': 'granted'
+      });
+    }
+
+    // Dynamically load GA script if not already loaded
+    if (!document.querySelector('script[src*="googletagmanager.com/gtag"]')) {
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-BZY5CJW9D0';
+      document.head.appendChild(script);
+
+      script.onload = () => {
+        if (window.gtag) {
+          window.gtag('js', new Date());
+          window.gtag('config', 'G-BZY5CJW9D0', {
+            'anonymize_ip': true
+          });
+        }
+      };
     }
   }
 
   private disableAnalytics() {
-    // Disable GA4
-    (window as any)['ga-disable-G-BZY5CJW9D0'] = true;
+    // Keep consent denied
+    if (window.gtag) {
+      window.gtag('consent', 'update', {
+        'analytics_storage': 'denied'
+      });
+    }
   }
 }
 </script>
