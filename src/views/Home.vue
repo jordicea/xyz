@@ -19,9 +19,9 @@
                                  class="activity-cell"
                                  :style="{ opacity: cell }"></div>
                         </div>
-                        <p v-if="showLegend" class="activity-legend">
-                            <span class="cursor-blink terminal-cursor" @click="openTerminal" title="Click to open interactive terminal">█</span> {{ contributionCount }} contributions in the last year
-                            <span class="play-hint">← click to play</span>
+                        <p v-if="showLegend" class="activity-legend terminal-line" @click="openTerminal" title="Click to open interactive terminal">
+                            <span class="cursor-blink">█</span> {{ contributionCount }} contributions in the last year
+                            <span class="play-hint">← click for CLI</span>
                         </p>
                     </div>
                     <SnakeGame v-else @close="closeSnake" />
@@ -258,6 +258,20 @@ h1 {
     opacity: 0.7;
 }
 
+.terminal-line {
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+    user-select: none;
+}
+
+.terminal-line:hover {
+    opacity: 1 !important;
+}
+
+.terminal-line:hover .play-hint {
+    opacity: 0.8 !important;
+}
+
 .play-hint {
     margin-left: 1em;
     opacity: 0.5;
@@ -272,16 +286,6 @@ h1 {
 
 .cursor-blink {
     animation: blink 1s step-end infinite;
-}
-
-.terminal-cursor {
-    cursor: pointer;
-    transition: transform 0.2s ease;
-}
-
-.terminal-cursor:hover {
-    transform: scale(1.2);
-    opacity: 1 !important;
 }
 
 @keyframes blink {
