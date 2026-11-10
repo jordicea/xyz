@@ -1,0 +1,17 @@
+---
+import { getT, type Lang } from '../i18n';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = getT(lang);
+---
+<footer>
+  <div class="wrap foot">
+    <span class="mono">© {new Date().getFullYear()} Jordi Cea</span>
+    <div>
+      <a href="https://github.com/jordicea" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/jordicea/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href={`/${lang}/privacy/`}>{t.f_priv}</a>
+      <button type="button" class="cs" id="cookie-settings">{t.ck_manage}</button>
+    </div>
+  </div>
+</footer>

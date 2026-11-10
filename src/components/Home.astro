@@ -1,0 +1,182 @@
+---
+import { Image } from 'astro:assets';
+import { getT, langs, names, type Lang } from '../i18n';
+import imgMega from '../assets/megadecoder.png';
+import imgAhorra from '../assets/ahorrameal.png';
+import imgSavvy from '../assets/savvysupper.png';
+import imgJordi from '../assets/jordi.jpg';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = getT(lang);
+const email = lang === 'en' ? 'hello@jordicea.xyz' : 'hola@jordicea.xyz';
+---
+<main id="top">
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="mono"><b></b><span>{t.h_kicker}</span></span>
+      <h1 set:html={t.h_title}></h1>
+      <p class="lead">{t.h_lead}</p>
+      <div class="cta">
+        <a class="btn pri" href="#contact"><span>{t.h_cta1}</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 8h12M9 3l5 5-5 5"/></svg></a>
+        <a class="btn" href="#work">{t.h_cta2}</a>
+      </div>
+      <p class="mono note">{t.h_note}</p>
+    </div>
+    <div class="rv">
+      <div class="phone stage" aria-hidden="true"><div class="scene on" data-s="maps">
+        <div class="search"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="7" cy="7" r="5"/><path d="m11 11 3.5 3.5"/></svg><span id="typed" data-q={JSON.stringify(t.q)}>{t.q[0]}</span><span class="caret"></span></div>
+        <div class="map">
+          <svg viewBox="0 0 400 170" preserveAspectRatio="xMidYMid slice"><g stroke="currentColor" stroke-opacity=".16" fill="none" stroke-width="2"><path d="M-10 120 L120 90 L240 110 L420 60"/><path d="M60 -10 L90 180"/><path d="M200 -10 L170 180"/><path d="M300 -10 L330 180"/><path d="M-10 40 L420 100"/></g><circle cx="86" cy="64" r="26" fill="currentColor" fill-opacity=".05"/></svg>
+          <span class="pin" style="left:18%;top:56%"></span><span class="pin" style="left:72%;top:30%"></span><span class="pin" style="left:80%;top:62%"></span><span class="pin me"></span>
+        </div>
+        <div class="res top"><span class="n">1</span><div><b>{t.m_biz}</b><small><span class="stars">★★★★★</span> 4,9 · <span>{t.m_open}</span></small></div></div>
+        <div class="res dim"><span class="n">2</span><div><b>———————</b><small>★★★★☆ 4,2</small></div></div>
+        <div class="res dim"><span class="n">3</span><div><b>———————</b><small>★★★☆☆ 3,8</small></div></div>
+        </div>
+
+        <div class="scene" data-s="web">
+          <div class="wb">
+            <div class="wb-bar"><i></i><i></i><i></i><span class="wb-url">tunegocio.com</span></div>
+            <div class="wb-hero">
+              <b class="l1"></b><b class="l2"></b><b class="l3"></b>
+              <span class="wb-cta">{t.sc_cta}</span>
+              <svg class="cursor" viewBox="0 0 24 24"><path d="M5 3l14 8-6 1.5L10 19z" fill="var(--ink)" stroke="var(--bg)" stroke-width="1.5" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="wb-stats">
+              <div><small>{t.sc_visits}</small><strong class="cnt" data-to="1248">0</strong></div>
+              <div><small>{t.sc_leads}</small><strong class="cnt" data-to="37">0</strong></div>
+              <div><small>{t.sc_conv}</small><strong class="cnt" data-to="30" data-dec="1" data-suf="%">0</strong></div>
+            </div>
+            <div class="toast"><span class="dotg"></span><div><b>{t.sc_new}</b><small>{t.sc_new_d}</small></div></div>
+          </div>
+        </div>
+
+        <div class="scene" data-s="auto">
+          <div class="fl">
+            <div class="fl-node"><span class="st"></span><div><small>{t.sc_when}</small><b>{t.sc_trig}</b></div></div>
+            <div class="fl-line"></div>
+            <div class="fl-node"><span class="st"></span><div><small>{t.sc_then}</small><b>{t.sc_n1}</b></div></div>
+            <div class="fl-line"></div>
+            <div class="fl-node"><span class="st"></span><div><small>{t.sc_then}</small><b>{t.sc_n2}</b></div></div>
+            <div class="fl-line"></div>
+            <div class="fl-node"><span class="st"></span><div><small>{t.sc_then}</small><b>{t.sc_n3}</b></div></div>
+            <div class="fl-done"><span>{t.sc_done}</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="tabs" role="tablist">
+        <button role="tab" data-s="maps">{t.sc_t_maps}</button>
+        <button role="tab" data-s="web">{t.sc_t_web}</button>
+        <button role="tab" data-s="auto">{t.sc_t_auto}</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="areas">
+  <div class="wrap">
+    <div class="head rv"><h2 set:html={t.ar_title}></h2><p class="s">{t.ar_sub}</p></div>
+    <div class="areas">
+      <article class="ar rv"><div class="viz" aria-hidden="true"><svg viewBox="0 0 200 110" fill="none"><rect x="14" y="12" width="172" height="26" rx="13" fill="var(--acc)" fill-opacity=".14" stroke="var(--acc)"/><circle cx="27" cy="25" r="7" fill="var(--acc)"/><rect x="43" y="21" width="84" height="8" rx="4" fill="currentColor" opacity=".75"/><rect x="14" y="46" width="172" height="26" rx="13" stroke="currentColor" opacity=".25"/><rect x="43" y="55" width="60" height="8" rx="4" fill="currentColor" opacity=".25"/><rect x="14" y="80" width="172" height="26" rx="13" stroke="currentColor" opacity=".15"/><rect x="43" y="89" width="72" height="8" rx="4" fill="currentColor" opacity=".15"/></svg></div><h3>{t.ar1_t}</h3><p>{t.ar1_d}</p><div class="tags">{t.ar1_g.split("·").map((x:string)=><span>{x}</span>)}</div></article>
+      <article class="ar rv"><div class="viz" aria-hidden="true"><svg viewBox="0 0 200 110" fill="none"><rect x="14" y="12" width="118" height="34" rx="14" fill="currentColor" opacity=".12"/><rect x="26" y="24" width="70" height="7" rx="3.5" fill="currentColor" opacity=".6"/><rect x="68" y="58" width="118" height="40" rx="14" fill="var(--acc)"/><rect x="82" y="70" width="80" height="7" rx="3.5" fill="var(--bg)" opacity=".9"/><rect x="82" y="83" width="50" height="6" rx="3" fill="var(--bg)" opacity=".6"/></svg></div><h3>{t.ar2_t}</h3><p>{t.ar2_d}</p><div class="tags">{t.ar2_g.split("·").map((x:string)=><span>{x}</span>)}</div></article>
+      <article class="ar rv"><div class="viz" aria-hidden="true"><svg viewBox="0 0 200 110" fill="none"><path d="M44 55h28M128 55h28" stroke="currentColor" stroke-dasharray="4 4" opacity=".5"/><path d="m68 50 6 5-6 5M152 50l6 5-6 5" stroke="currentColor" opacity=".6"/><circle cx="30" cy="55" r="15" stroke="currentColor" opacity=".6"/><circle cx="100" cy="55" r="17" fill="var(--acc)"/><circle cx="170" cy="55" r="15" stroke="currentColor" opacity=".6"/><path d="M93 55h14M100 48v14" stroke="var(--bg)" stroke-width="2"/></svg></div><h3>{t.ar3_t}</h3><p>{t.ar3_d}</p><div class="tags">{t.ar3_g.split("·").map((x:string)=><span>{x}</span>)}</div></article>
+      <article class="ar rv"><div class="viz" aria-hidden="true"><svg viewBox="0 0 200 110" fill="none"><rect x="24" y="8" width="152" height="94" rx="10" stroke="currentColor" opacity=".5"/><path d="M24 28h152" stroke="currentColor" opacity=".3"/><circle cx="36" cy="18" r="3" fill="var(--acc)"/><circle cx="46" cy="18" r="3" fill="currentColor" opacity=".3"/><circle cx="56" cy="18" r="3" fill="currentColor" opacity=".3"/><rect x="38" y="40" width="70" height="10" rx="5" fill="currentColor" opacity=".8"/><rect x="38" y="58" width="94" height="6" rx="3" fill="currentColor" opacity=".25"/><rect x="38" y="70" width="80" height="6" rx="3" fill="currentColor" opacity=".25"/><rect x="38" y="84" width="40" height="10" rx="5" fill="var(--acc)"/></svg></div><h3>{t.ar4_t}</h3><p>{t.ar4_d}</p><div class="tags">{t.ar4_g.split("·").map((x:string)=><span>{x}</span>)}</div></article>
+    </div>
+  </div>
+</section>
+
+<section id="how" style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="head rv"><h2 set:html={t.co_title}></h2><p class="s">{t.co_sub}</p></div>
+    <div class="modes">
+      <article class="card rv"><span class="mono">{t.co1_k}</span><h3>{t.co1_t}</h3><p class="mute">{t.co1_d}</p><p class="ideal">{t.co1_i}</p></article>
+      <article class="card rv"><span class="mono">{t.co2_k}</span><h3>{t.co2_t}</h3><p class="mute">{t.co2_d}</p><p class="ideal">{t.co2_i}</p></article>
+      <article class="card rv"><span class="mono">{t.co3_k}</span><h3>{t.co3_t}</h3><p class="mute">{t.co3_d}</p><p class="ideal">{t.co3_i}</p></article>
+    </div>
+    <p class="mono rv" style="margin-top:28px">{t.co_note}</p>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="head rv"><h2 set:html={t.w_title}></h2><p class="s">{t.w_sub}</p></div>
+    <div class="work">
+      <a class="case rv" href="https://megadecoder.app" target="_blank" rel="noopener"><div class="shot ph"><Image src={imgMega} alt="MegaDecoder" widths={[480,800]} sizes="(min-width:1100px) 400px, 90vw" style="--z:1.4;--o:50% 52%" /></div><span class="mono badge">{t.w_live}</span><h3>{t.w1_t}</h3><p>{t.w1_d}</p></a>
+      <a class="case rv" href={lang==='en'?'https://savvysupper.jordicea.xyz':'https://ahorrameal.jordicea.xyz'} target="_blank" rel="noopener"><div class="shot ph"><Image src={lang==='en'?imgSavvy:imgAhorra} alt={lang==='en'?'Savvy Supper':'AhorraMeal'} widths={[480,800]} sizes="(min-width:1100px) 400px, 90vw" style="--z:2.2;--o:100% 52%" /></div><span class="mono badge">{t.w_dev}</span><h3>{t.w2_t}</h3><p>{t.w2_d}</p></a>
+      <div class="case rv"><div class="shot pay" aria-hidden="true">
+        <div class="cc"><span class="chip"></span><span class="cn">•••• 4242</span><span class="fail">✕</span></div>
+        <div class="pn"><span class="btnpay">Pay Now</span>
+          <div class="ringw"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="16" fill="none" stroke="var(--line)" stroke-width="4"/><circle class="ring" cx="20" cy="20" r="16" fill="none" stroke="var(--acc)" stroke-width="4" stroke-linecap="round" stroke-dasharray="100.5" stroke-dashoffset="100.5" transform="rotate(-90 20 20)"/></svg><b>70%</b></div>
+          <small>{t.w_rec}</small>
+        </div>
+      </div><span class="mono badge">{t.w_nda}</span><h3>{t.w3_t}</h3><p>{t.w3_d}</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="approach" style="background:var(--bg2)">
+  <div class="wrap manifesto">
+    <span class="mono rv">{t.pr_k}</span>
+    <p class="rv" set:html={t.pr_text}></p>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap about">
+    <div class="pwrap rv"><div class="portrait"><Image src={imgJordi} alt="Jordi Cea" widths={[240,480]} sizes="240px" /></div></div>
+    <div class="rv">
+      <span class="mono">{t.a_k}</span>
+      <p class="big" set:html={t.a_big}></p>
+      <p style="color:var(--mute);max-width:54ch">{t.a_p}</p>
+      <div class="checks"><span>{t.a_c1}</span><span>{t.a_c2}</span><span>{t.a_c3}</span><span>{t.a_c4}</span></div>
+      <div class="term"><span>$</span> whoami<br><span class="g">jordi</span> — software engineer<br><span>$</span> ./ayudar --problema<br><span class="g">ok</span> <span style="opacity:.6">▍</span></div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--bg2)">
+  <div class="wrap faq">
+    <div class="head rv" style="margin-bottom:24px"><h2 set:html={t.f_title}></h2></div>
+    <details class="rv"><summary>{t.f1_q}</summary><p>{t.f1_a}</p></details>
+    <details class="rv"><summary>{t.f2_q}</summary><p>{t.f2_a}</p></details>
+    <details class="rv"><summary>{t.f3_q}</summary><p>{t.f3_a}</p></details>
+    <details class="rv"><summary>{t.f4_q}</summary><p>{t.f4_a}</p></details>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:clamp(72px,11vw,160px)">
+  <div class="wrap">
+<div class="contact rv">
+      <div style="position:relative">
+        <span class="mono">{t.k_k}</span>
+        <h2 style="margin-top:18px" set:html={t.k_title}></h2>
+        <p class="s">{t.k_sub}</p>
+        <div class="alt">
+          <a class="btn pri" href="#form" data-call>{t.k_call}</a>
+          <a class="btn" href={`mailto:${email}`}>{email}</a>
+        </div>
+      </div>
+      <form id="form" name={`contact-${lang}`} method="POST" action={`/${lang}/thanks/`} data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value={`contact-${lang}`} />
+        <p class="hp" aria-hidden="true"><label>Leave empty <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+        <input required name="name" placeholder={t.k_name} autocomplete="name" />
+        <input required type="email" name="email" placeholder={t.k_email} autocomplete="email" />
+        <input name="site" placeholder={t.k_site} />
+        <fieldset class="how">
+          <legend>{t.k_how}</legend>
+          <label><input type="radio" name="reply" value="email" checked /><span>{t.k_opt_email}</span></label>
+          <label><input type="radio" name="reply" value="phone" /><span>{t.k_opt_call}</span></label>
+        </fieldset>
+        <div class="callfields" id="callfields" hidden>
+          <input type="tel" name="phone" id="phone" placeholder={t.k_phone} autocomplete="tel" />
+          <input name="when" placeholder={t.k_when} />
+        </div>
+        <textarea name="message" rows="3" placeholder={t.k_msg} required></textarea>
+        <label class="consent"><input type="checkbox" name="consent" required /><span>{t.k_consent} <a href={`/${lang}/privacy/`}>{t.f_priv}</a></span></label>
+        <button class="btn pri" style="justify-self:start;margin-top:12px">{t.k_send}</button>
+      </form>
+    </div>
+  </div>
+</section>
+</main>

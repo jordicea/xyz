@@ -1,0 +1,18 @@
+---
+// Fallback de `/`: en Netlify la redirección por idioma (netlify.toml) se aplica antes.
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Jordi Cea</title>
+  <meta name="robots" content="noindex" />
+  <link rel="canonical" href="https://jordicea.xyz/en/" />
+  <meta http-equiv="refresh" content="0; url=/en/" />
+  <script is:inline>
+    var l = (navigator.language || 'en').slice(0, 2);
+    location.replace(l === 'es' ? '/es/' : l === 'ca' ? '/ca/' : '/en/');
+  </script>
+</head>
+<body><a href="/en/">Jordi Cea</a></body>
+</html>
