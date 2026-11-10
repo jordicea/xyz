@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://jordicea.xyz/sitemap-index.xml

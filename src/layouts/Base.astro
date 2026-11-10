@@ -1,0 +1,71 @@
+---
+import '@fontsource/instrument-serif/400.css';
+import '@fontsource/instrument-serif/400-italic.css';
+import '@fontsource-variable/inter-tight/index.css';
+import '@fontsource/jetbrains-mono/400.css';
+import '@fontsource/jetbrains-mono/500.css';
+import '../styles/global.css';
+import { getT, langs, names, type Lang } from '../i18n';
+interface Props { lang: Lang; path?: string; title?: string; description?: string; noindex?: boolean; home?: boolean }
+const { lang, path = '', noindex = false, home = false } = Astro.props;
+const t = getT(lang);
+const title = Astro.props.title ?? t.meta_title;
+const description = Astro.props.description ?? t.meta_desc;
+const site = 'https://jordicea.xyz';
+const url = `${site}/${lang}/${path}`;
+const ld = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: 'Jordi Cea',
+  url: `${site}/${lang}/`,
+  description: t.meta_desc,
+  knowsLanguage: ['en', 'es', 'ca'],
+  sameAs: ['https://github.com/jordicea', 'https://www.linkedin.com/in/jordicea/'],
+};
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+---
+<!doctype html>
+<html lang={lang}>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={url} />
+  {noindex && <meta name="robots" content="noindex" />}
+  {langs.map((l) => <link rel="alternate" hreflang={l} href={`${site}/${l}/${path}`} />)}
+  <link rel="alternate" hreflang="x-default" href={`${site}/en/${path}`} />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Jordi Cea" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={url} />
+  <meta property="og:locale" content={names[lang].locale} />
+  <meta property="og:image" content={`${site}/og.png`} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon.ico" sizes="48x48" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <script type="application/ld+json" set:html={JSON.stringify(ld)} />
+  <script is:inline>
+    document.documentElement.classList.add('js');
+    try { var th = localStorage.getItem('theme'); if (th === 'light' || th === 'dark') document.documentElement.dataset.theme = th; } catch (e) {}
+  </script>
+</head>
+<body>
+  <SiteHeader lang={lang} path={path} home={home} />
+  <slot />
+  <SiteFooter lang={lang} />
+  <div class="cookie" id="cookie" role="dialog" aria-live="polite" aria-label="Cookies">
+    <p>{t.ck_text} <a href={`/${lang}/privacy/`}>{t.f_priv}</a></p>
+    <div class="row">
+      <button class="btn sm" id="ck-decline" type="button">{t.ck_decline}</button>
+      <button class="btn pri sm" id="ck-accept" type="button">{t.ck_accept}</button>
+    </div>
+  </div>
+  <script>import '../scripts/site.js';</script>
+</body>
+</html>

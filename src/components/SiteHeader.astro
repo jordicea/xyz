@@ -1,0 +1,33 @@
+---
+import { getT, langs, names, type Lang } from '../i18n';
+interface Props { lang: Lang; path?: string; home?: boolean }
+const { lang, path = '', home = false } = Astro.props;
+const t = getT(lang);
+---
+<header>
+  <div class="wrap bar">
+    <a class="logo" href={`/${lang}/`}><i></i>Jordi Cea</a>
+    <nav class="menu" id="menu">
+      <a class="l" href={home?"#areas":`/${lang}/#areas`}>{t.nav_areas}</a>
+      <a class="l" href={home?"#work":`/${lang}/#work`}>{t.nav_work}</a>
+      <a class="l" href={home?"#how":`/${lang}/#how`}>{t.nav_how}</a>
+      <a class="l" href={home?"#about":`/${lang}/#about`}>{t.nav_about}</a>
+      <a class="btn pri sm menu-cta" href={home?"#contact":`/${lang}/#contact`}>{t.nav_cta}</a>
+    </nav>
+    <div class="tools">
+      <div class="lang" id="lang">
+        <button class="pill" id="lbtn" aria-haspopup="listbox" aria-expanded="false" aria-label={t.lang_label}><span>{names[lang].short}</span><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m1.5 3.5 3.5 3.5 3.5-3.5"/></svg></button>
+        <ul role="listbox" tabindex="-1">
+          {langs.map((l)=>(<li role="option" aria-selected={l===lang}><a href={`/${l}/${path}`} hreflang={l} lang={l}>{names[l].long} <span>{names[l].short}</span></a></li>))}
+        </ul>
+      </div>
+      <button class="tbtn" id="theme" data-state="system" type="button" data-label={JSON.stringify({label:t.th_label,system:t.th_sys,light:t.th_light,dark:t.th_dark})}>
+        <svg class="i-a" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9.5"/><path d="m8 16.5 4-9 4 9M9.6 13.2h4.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg class="i-s" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.5M12 19v2.5M2.5 12H5M19 12h2.5M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8"/></svg>
+        <svg class="i-m" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+      <a class="btn pri sm tools-cta" href={home?'#contact':`/${lang}/#contact`}>{t.nav_cta}</a>
+      <button class="burger" id="burger" aria-label={t.burger} aria-expanded="false" aria-controls="menu"><span></span></button>
+    </div>
+  </div>
+</header>
