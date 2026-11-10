@@ -159,6 +159,7 @@ const email = lang === 'en' ? 'hello@jordicea.xyz' : 'hola@jordicea.xyz';
       </div>
       <form id="form" name={`contact-${lang}`} method="POST" action={`/${lang}/thanks/`} data-netlify="true" netlify-honeypot="bot-field">
         <input type="hidden" name="form-name" value={`contact-${lang}`} />
+        <input type="hidden" name="subject" value="Jordicea.xyz · %{formName} · %{submissionId}" />
         <p class="hp" aria-hidden="true"><label>Leave empty <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
         <input required name="name" placeholder={t.k_name} autocomplete="name" />
         <input required type="email" name="email" placeholder={t.k_email} autocomplete="email" />
