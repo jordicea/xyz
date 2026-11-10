@@ -107,11 +107,12 @@ header{position:sticky;top:0;z-index:40;backdrop-filter:blur(14px) saturate(1.4)
 .lang.open .pill svg{transform:rotate(180deg)}
 .lang ul{position:absolute;right:0;top:calc(100% + 10px);min-width:170px;margin:0;padding:6px;list-style:none;background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:0 24px 50px -24px rgba(0,0,0,.35);display:none}
 .lang.open ul{display:block}
-.lang li{cursor:pointer;display:flex;justify-content:space-between;align-items:center;padding:10px 12px;border-radius:10px;font-size:15px}
-.lang li:hover,.lang li:focus-visible{background:var(--bg2);outline:none}
-.lang li span{font:500 11px var(--mono);color:var(--mute)}
-.lang li[aria-selected="true"]{color:var(--acc)}
-.lang li[aria-selected="true"]::after{content:"¹3";font-size:13px}
+.lang li{margin:0}
+.lang li a{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;font-size:15px;text-decoration:none;color:var(--ink);transition:background .2s}
+.lang li a:hover,.lang li a:focus-visible{background:var(--bg2);outline:none}
+.lang li a span{font:500 11px var(--mono);color:var(--mute);margin-right:auto}
+.lang li[aria-selected="true"] a{color:var(--acc-text)}
+.lang li[aria-selected="true"] a::after{content:"";width:6px;height:11px;border:solid currentColor;border-width:0 2px 2px 0;transform:rotate(45deg) translate(-2px,-1px)}
 .tbtn{all:unset;cursor:pointer;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--card);display:grid;place-items:center;transition:border-color .2s,transform .3s}
 .tbtn:hover{border-color:var(--acc);transform:rotate(15deg)}
 .tbtn svg{width:19px;height:19px;grid-area:1/1;opacity:0;transform:scale(.4) rotate(-90deg);transition:.35s}
